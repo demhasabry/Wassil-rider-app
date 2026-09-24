@@ -1,0 +1,390 @@
+{
+  "@@locale": "en",
+  "appTitle": "Wassil Rider",
+  "splashTagline": "Your delivery, your price.",
+  "splashRiderRoleChip": "RIDER",
+
+  "riderSignInHeading": "Rider Sign In",
+  "phoneLoginHeading": "Enter your name and phone number",
+  "fullNameHint": "Full name",
+  "phoneHint": "09XXXXXXXX",
+  "sendCodeButton": "Send code",
+  "enterNameError": "Enter your name",
+  "enterPhoneError": "Enter your phone number",
+
+  "otpTitle": "Verify code",
+  "otpCodeSentTo": "Code sent to {phone}",
+  "@otpCodeSentTo": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "otpHint": "123456",
+  "verifyButton": "Verify",
+  "enterSixDigitCode": "Enter the 6-digit code",
+  "invalidCodeError": "Invalid code. Try again.",
+  "verificationFailedError": "Verification failed. Try again.",
+
+  "profileTitle": "My Profile",
+  "fullNameLabel": "Full name",
+  "saveChangesButton": "Save Changes",
+  "faqButton": "Frequently Asked Questions",
+
+  "languageLabel": "Language",
+  "languageSystemDefault": "System default",
+  "languageEnglish": "English",
+  "languageArabic": "العربية",
+
+  "goOnlineLabel": "Go Online",
+  "goOfflineLabel": "Go Offline",
+  "noOpenRequests": "No open requests right now.",
+
+  "cancelButton": "Cancel",
+  "confirmButton": "Confirm",
+  "continueButton": "Continue",
+  "backButton": "Back",
+  "reasonOther": "Other",
+  "reportProblemTitle": "Report a Problem",
+  "tellUsMoreHint": "Tell us more...",
+  "confirmCancellationButton": "Confirm Cancellation",
+  "keepItButton": "Keep it",
+  "reasonLabel": "Reason",
+  "additionalDetailsHint": "Additional details (optional)",
+  "submitReportButton": "Submit Report",
+  "reportSubmittedMessage": "Report submitted. Our team will follow up.",
+  "profileTooltip": "Profile",
+  "profileUpdated": "Profile updated.",
+
+  "couldNotMarkPickedUpError": "Could not mark as picked up.",
+  "couldNotMarkArrivedError": "Could not mark as arrived.",
+  "couldNotStartWaitingFeeError": "Could not start the waiting fee.",
+  "startWaitingFeeButton": "Charge Waiting Fee",
+  "waitingFeeActiveLabel": "Waiting fee active",
+  "customerIsComingLabel": "Customer is on the way to you",
+  "waitingGracePeriodLabel": "Free wait time left: {remaining}",
+  "@waitingGracePeriodLabel": {
+    "placeholders": { "remaining": { "type": "String" } }
+  },
+  "enterDeliveryCodeTitle": "Enter delivery code",
+  "deliveryCodeInstruction": "Ask the customer for the 4-digit code shown on their tracking screen.",
+  "deliveryCodeHint": "1234",
+  "couldNotCompleteDeliveryError": "Could not complete delivery.",
+  "customerFallbackName": "Customer",
+  "cancelDeliveryError": "Could not cancel this delivery.",
+  "couldNotOpenMapsError": "Could not open Google Maps.",
+  "cancelDeliveryDialogTitle": "Cancel this delivery?",
+  "reasonVehicleIssue": "Vehicle issue",
+  "reasonPersonalEmergency": "Personal emergency",
+  "reasonCustomerUnreachable": "Customer unreachable",
+  "reasonDistanceTooFar": "Distance too far",
+  "reasonWrongAddress": "Wrong address",
+  "reasonCustomerRefusedDelivery": "Customer refused delivery",
+  "reasonSafetyConcern": "Safety concern",
+  "activeDeliveryTitle": "Active Delivery",
+  "dropoffLabel": "Drop-off",
+  "pickupLabel": "Pickup",
+  "orderDetailTitle": "Delivery details",
+  "customerLabel": "Customer",
+  "contactPhoneLabel": "Contact phone",
+  "priceLabel": "Price",
+  "headingToLabel": "Heading to {destination}",
+  "@headingToLabel": {
+    "placeholders": { "destination": { "type": "String" } }
+  },
+  "headingToWord": "Heading to",
+  "etaApproxMinutes": "~{minutes} min",
+  "@etaApproxMinutes": {
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "packageLabel": "Package: {description}",
+  "@packageLabel": {
+    "placeholders": { "description": { "type": "String" } }
+  },
+  "amountToCollectLabel": "Amount to collect: {amount} SDG",
+  "@amountToCollectLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "receiverContactLabel": "Receiver: ",
+  "pickupContactLabel": "Pickup contact: ",
+  "navigateWithGoogleMapsButton": "Navigate with Google Maps",
+  "markDeliveredButton": "Mark Delivered",
+  "markPickedUpButton": "Mark Picked Up",
+  "markArrivedButton": "I've Arrived",
+
+  "enterValidPriceError": "Enter a valid price",
+  "maxAllowedBidError": "Max allowed bid for this distance is {maxBid} SDG",
+  "@maxAllowedBidError": {
+    "placeholders": { "maxBid": { "type": "String" } }
+  },
+  "bidSubmittedMessage": "Bid submitted! Waiting for customer to respond.",
+  "couldNotSubmitBidError": "Could not submit bid.",
+  "placeYourBidTitle": "Place Your Bid",
+  "pickupAddressLine": "Pickup: {address}",
+  "@pickupAddressLine": {
+    "placeholders": { "address": { "type": "String" } }
+  },
+  "dropoffAddressLine": "Drop-off: {address}",
+  "@dropoffAddressLine": {
+    "placeholders": { "address": { "type": "String" } }
+  },
+  "purchaseBudgetWarning": "You will need to pay ~{amount} SDG at pickup — bring this cash before bidding.",
+  "@purchaseBudgetWarning": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "basePriceLabel": "Base price: {price} SDG",
+  "basePriceTag": "Base",
+  "balanceLabel": "Balance",
+  "@basePriceLabel": {
+    "placeholders": { "price": { "type": "String" } }
+  },
+  "maxBidAllowedLabel": "Max bid allowed: {maxBid} SDG",
+  "@maxBidAllowedLabel": {
+    "placeholders": { "maxBid": { "type": "String" } }
+  },
+  "yourPriceLabel": "Your price (SDG)",
+  "etaAutoCalculatedNote": "Your ETA is calculated automatically from your current location.",
+  "submitBidButton": "Submit Bid",
+
+  "earningsTitle": "Earnings",
+  "completedDeliveriesCount": "{count} completed deliveries",
+  "@completedDeliveriesCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "totalCollectedLabel": "{amount} SDG collected",
+  "@totalCollectedLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "commissionNetSummary": "{commission} SDG paid in commission · {net} SDG net",
+  "@commissionNetSummary": {
+    "placeholders": {
+      "commission": { "type": "String" },
+      "net": { "type": "String" }
+    }
+  },
+  "noCompletedDeliveriesYet": "No completed deliveries yet.",
+  "noDescriptionPlaceholder": "(no description)",
+  "priceSdgLabel": "{amount} SDG",
+  "@priceSdgLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "feeDeductedLabel": "-{amount} fee",
+  "@feeDeductedLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+
+  "faqTitle": "Frequently Asked Questions",
+  "faq1Question": "Why can't I go online yet?",
+  "faq1Answer": "New accounts start pending until an admin reviews your KYC documents (ID photo and vehicle photo). Submit these from the banner on your home screen — you'll be able to go online once approved.",
+  "faq2Question": "How does the wallet balance work?",
+  "faq2Answer": "A small commission is deducted from your wallet balance each time you complete a delivery. Top up your balance via bank transfer from the Wallet screen — if it runs out, you won't be able to go online until you top up again.",
+  "faq3Question": "What happens if I change my vehicle type?",
+  "faq3Answer": "Your KYC approval is tied to the vehicle you were verified with. Switching to a different vehicle type resets your account to pending and requires new documents before you can go online again.",
+  "faq4Question": "Why can't I bid in some zones?",
+  "faq4Answer": "Some zones only allow certain vehicle types (for example, bicycle-only zones). If your vehicle isn't permitted in a zone, your bids there will be rejected automatically.",
+  "faq5Question": "How do I complete a delivery?",
+  "faq5Answer": "Ask the customer for the 4-digit confirmation code shown on their tracking screen, then enter it when tapping \"Mark Delivered.\" This is required — it's proof you actually completed the delivery.",
+  "faq6Question": "What if I need to cancel after accepting a bid?",
+  "faq6Answer": "You can cancel before picking up the package — this reopens the request for other riders to bid on rather than leaving the customer stranded. Try to avoid this when possible, as customers see it.",
+  "faq7Question": "A customer needs me to buy something for them — what should I know?",
+  "faq7Answer": "If the request shows an estimated purchase amount, bring at least that much cash before bidding. Always keep the receipt for the customer.",
+
+  "kycApprovalPendingError": "Your account is still waiting on KYC approval.",
+  "balanceDepletedError": "Your commission balance is depleted. Top up to go online.",
+  "locationPermissionRequiredError": "Location permission is required to go online",
+  "availableDeliveriesTitle": "Available Deliveries",
+  "earningsTooltip": "Earnings",
+  "commissionBalanceTooltip": "Commission Balance",
+  "onlineLabel": "Online",
+  "offlineLabel": "Offline",
+  "openRequestsHeading": "Open requests",
+  "nearbyCountLabel": "{count} nearby",
+  "@nearbyCountLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "riderRatingSummary": "★ {rating} · {count}",
+  "newRiderLabel": "New",
+  "@riderRatingSummary": {
+    "placeholders": {
+      "rating": { "type": "String" },
+      "count": { "type": "int" }
+    }
+  },
+  "todayLabel": "Today",
+  "zoneRidersOnlineLabel": "Zone: {zone} · {count} riders online",
+  "@zoneRidersOnlineLabel": {
+    "placeholders": {
+      "zone": { "type": "String" },
+      "count": { "type": "int" }
+    }
+  },
+  "noOpenRequestsDashedMessage": "No requests available right now.",
+  "kycRejectedMessage": "Your KYC was rejected. Contact support for next steps.",
+  "kycRejectedWithReasonMessage": "Your KYC was rejected: {reason}. Contact support for next steps.",
+  "@kycRejectedWithReasonMessage": {
+    "placeholders": { "reason": { "type": "String" } }
+  },
+  "vehicleZoneMismatchMessage": "Your vehicle type isn't permitted in your current zone — update your vehicle type or region in your profile before going online.",
+  "goToProfileButton": "Go to Profile",
+  "kycDocsSubmittedMessage": "Documents submitted — waiting on admin review.",
+  "kycUploadPromptMessage": "Upload your ID and vehicle photo to get approved.",
+  "uploadDocumentsButton": "Upload Documents",
+  "balanceDepletedBannerMessage": "Commission balance depleted — top up to go online and accept deliveries.",
+  "topUpButton": "Top Up",
+  "goOnlineToSeeRequestsMessage": "Go online to see nearby delivery requests.",
+  "bringCashToPickupLabel": "Bring ~{amount} SDG to pay at pickup",
+  "@bringCashToPickupLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "estimatedWeightLabel": "≈{weight} kg cargo",
+  "@estimatedWeightLabel": {
+    "placeholders": { "weight": { "type": "String" } }
+  },
+  "etaMinutesAwayLabel": "{minutes} min away",
+  "@etaMinutesAwayLabel": {
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "bidButton": "Bid",
+
+  "takeAllPhotosError": "Take all required photos before submitting",
+  "docsSubmittedSnackbarMessage": "Documents submitted — waiting for admin review.",
+  "uploadFailedError": "Upload failed. Check your connection and try again.",
+  "personalIdLabel": "Personal ID (Passport or National ID)",
+  "licenseFrontLabel": "Driver's License — Front",
+  "licenseBackLabel": "Driver's License — Back",
+  "vehicleRegFrontLabel": "Vehicle Registration — Front",
+  "vehicleRegBackLabel": "Vehicle Registration — Back",
+  "kycVerificationTitle": "KYC Verification",
+  "kycInstructions": "Take a clear photo of the required documents for your vehicle type. An admin will review these before you can start accepting deliveries.",
+  "kycDocNoteBicycle": "Bicycle riders only need to provide a personal ID.",
+  "kycDocNoteOther": "This vehicle type needs a driver's license and vehicle registration, front and back.",
+  "kycPendingTitle": "Under Review",
+  "kycPendingBody": "Your documents are being reviewed by an admin. This usually doesn't take long.",
+  "kycApprovedTitle": "Approved",
+  "kycApprovedBody": "Your documents are approved — you're all set to accept deliveries.",
+  "kycRejectedTitle": "Documents Rejected",
+  "kycRejectedBody": "Your documents were rejected. Please retake them and submit again.",
+  "docCapturedLabel": "Captured",
+  "docTapToCaptureLabel": "Tap to capture",
+  "submitForReviewButton": "Submit for Review",
+
+  "tapStarToRateCustomerError": "Tap a star to rate the customer",
+  "submitRatingError": "Could not submit rating.",
+  "deliveryCompleteTitle": "Delivery Complete",
+  "collectedAmountLabel": "Collected: {amount} SDG",
+  "@collectedAmountLabel": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "howWasCustomerTitle": "How was this customer?",
+  "optionalCommentAboutCustomerHint": "Optional comment about this customer",
+  "submitRatingButton": "Submit Rating",
+  "skipButton": "Skip",
+
+  "newVehicleVerificationTitle": "New vehicle needs new verification",
+  "newVehicleVerificationContent": "Your account was approved for your current vehicle. Switching to a different one will require you to submit new KYC documents before you can go online again.",
+  "vehicleUpdatedReverificationMessage": "Vehicle updated — upload new KYC documents to go online again.",
+  "couldNotUpdateVehicleError": "Could not update vehicle type.",
+  "vehicleTypeLabel": "Vehicle type",
+  "plateNumberLabel": "Plate number",
+  "approvedForLabel": "Approved for: {vehicleType}",
+  "@approvedForLabel": {
+    "placeholders": { "vehicleType": { "type": "String" } }
+  },
+  "operatingZoneLabel": "Operating zone",
+
+  "commissionBalanceTitle": "Commission Balance",
+  "balanceDepletedMessage": "Your balance is depleted. Top up to keep accepting deliveries.",
+  "topUpViaBankakButton": "Top Up Balance",
+  "transactionHistoryTitle": "Transaction History",
+  "commissionDeductionNote": "A commission is deducted here automatically after each cash/bank-transfer delivery you complete.",
+  "noTransactionsYet": "No transactions yet.",
+  "transactionCommissionLabel": "Commission",
+  "collectedWord": "Collected",
+  "netWord": "Net",
+  "transactionTopUpLabel": "Top-Up",
+  "autoDeductedLabel": "Auto-deducted",
+  "viaMethodLabel": "via {method}",
+  "@viaMethodLabel": {
+    "placeholders": { "method": { "type": "String" } }
+  },
+  "deductedLabel": "deducted",
+  "txStatusVerified": "verified",
+  "txStatusRejected": "rejected",
+  "txStatusPending": "pending",
+
+  "enterValidAmountError": "Enter a valid amount",
+  "enterReferenceCodeError": "Enter the reference code from your transfer",
+  "selectPaymentAccountError": "Select which bank you sent the transfer to",
+  "topupSubmittedMessage": "Top-up submitted. It will be verified shortly.",
+  "topUpCommissionBalanceTitle": "Top Up Commission Balance",
+  "howToTopUpTitle": "How to top up",
+  "topUpStep1": "1. Choose a bank below and send the amount",
+  "topUpStep2": "2. Copy the transaction reference code from your banking app",
+  "topUpStep3": "3. Enter the amount and code below",
+  "topUpStep4": "4. Your balance updates once an admin verifies it",
+  "noPaymentAccountsMessage": "No payment accounts configured yet — contact support.",
+  "bankLabel": "Bank",
+  "selectAccountToTransferLabel": "Select an account to transfer to",
+  "amountSdgLabel": "Amount (SDG)",
+  "bankakReferenceLabel": "Transaction reference code",
+  "submitTopUpRequestButton": "Submit Top-Up Request",
+
+  "profileSetupTitle": "Complete your profile",
+  "genderLabel": "Gender",
+  "genderMale": "Male",
+  "genderFemale": "Female",
+  "regionLabel": "Region",
+  "noRegionsAvailableMessage": "No regions available yet — you can set this later from your profile.",
+  "addPhotoLabel": "Add a profile photo",
+  "photoRequiredHint": "Required — customers will see this on your bids and tracking screen",
+  "takePhotoOption": "Take photo",
+  "chooseFromGalleryOption": "Choose from gallery",
+  "profileSetupError": "Could not save your profile. Try again.",
+
+  "commissionWaivedLabel": "Commission waived",
+
+  "signInHeading": "Enter your phone number to continue",
+  "phoneContinueButton": "Continue",
+  "checkPhoneError": "Could not verify this phone number. Check your connection and try again.",
+  "passwordHint": "Password",
+  "loginButton": "Login",
+  "forgotPasswordLink": "Forgot password?",
+  "wrongPasswordError": "Incorrect password. Try again.",
+
+  "setPasswordTitle": "Set a password",
+  "setPasswordInstruction": "Set a password so you can sign in faster next time without waiting for a code.",
+  "newPasswordHint": "New password",
+  "confirmPasswordHint": "Confirm password",
+  "showPasswordWord": "Show",
+  "pwRuleLength": "At least 6 characters",
+  "pwRuleMatch": "Both fields match",
+  "passwordTooShortError": "Password must be at least 6 characters",
+  "passwordsDontMatchError": "Passwords don't match",
+  "savePasswordButton": "Save Password",
+  "setPasswordError": "Could not save your password. Try again.",
+
+  "forgotPasswordTitle": "Reset your password",
+  "forgotPasswordInstruction": "We'll text a verification code to {phone}",
+  "@forgotPasswordInstruction": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+
+  "logoutButton": "Logout",
+  "logoutConfirmTitle": "Log out?",
+  "logoutConfirmMessage": "You'll need your phone number and password to sign back in.",
+
+  "emailLabel": "Email (optional)",
+  "invalidEmailError": "Enter a valid email address",
+
+  "contactSupportButton": "Contact Support",
+  "contactSupportTitle": "Contact Support",
+  "callSupportButton": "Call Support",
+  "whatsappSupportButton": "WhatsApp Support",
+  "emailSupportButton": "Email Support",
+  "supportMessageHint": "Describe your issue...",
+  "submitSupportMessageButton": "Send Message",
+  "supportMessageSentMessage": "Message sent — our team will get back to you.",
+  "supportMessageError": "Could not send your message. Try again.",
+  "describeIssueError": "Describe your issue before sending",
+  "myTicketsHeading": "Your Messages",
+  "ticketStatusOpen": "Awaiting reply",
+  "ticketStatusResolved": "Resolved",
+  "supportReplyLabel": "Support"
+}
