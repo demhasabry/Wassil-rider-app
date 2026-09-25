@@ -12,6 +12,7 @@ import '../widgets/report_problem_dialog.dart';
 import '../widgets/locate_me_button.dart';
 import '../services/route_service.dart';
 import '../services/sound_service.dart';
+import '../services/callable_function.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_typography.dart';
@@ -65,8 +66,7 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
   Future<void> _markPickedUp() async {
     setState(() => _isUpdating = true);
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('markPickedUp');
-      await callable.call({'requestId': widget.request.id});
+      await callFunction('markPickedUp', {'requestId': widget.request.id});
     } on FirebaseFunctionsException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -81,8 +81,7 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
   Future<void> _markArrived() async {
     setState(() => _isUpdating = true);
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('markArrived');
-      await callable.call({'requestId': widget.request.id});
+      await callFunction('markArrived', {'requestId': widget.request.id});
     } on FirebaseFunctionsException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -104,8 +103,7 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
   Future<void> _startWaitingFee() async {
     setState(() => _isUpdating = true);
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('startWaitingFee');
-      await callable.call({'requestId': widget.request.id});
+      await callFunction('startWaitingFee', {'requestId': widget.request.id});
     } on FirebaseFunctionsException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -156,11 +154,10 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
 
     setState(() => _isUpdating = true);
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('completeDelivery');
       // Default to cash/Bankak settlement — the customer settles outside the
       // app and an admin verifies it later. Swap to 'wallet' once wallet
       // top-ups are wired into the customer app.
-      await callable.call({
+      await callFunction('completeDelivery', {
         'requestId': widget.request.id,
         'paymentMethod': 'cash',
         'confirmationCode': code,
@@ -216,8 +213,7 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
 
     setState(() => _isUpdating = true);
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('cancelRequest');
-      await callable.call({'requestId': widget.request.id, 'reason': reason});
+      await callFunction('cancelRequest', {'requestId': widget.request.id, 'reason': reason});
       SoundService.cancellation();
       // No explicit navigation needed here — once status flips to
       // "cancelled", the home screen's live query stops matching this

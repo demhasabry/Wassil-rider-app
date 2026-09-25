@@ -6,6 +6,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import '../models/delivery_request.dart';
 import '../services/route_service.dart';
+import '../services/callable_function.dart';
 import '../widgets/locate_me_button.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../theme/app_colors.dart';
@@ -112,8 +113,7 @@ class _BidSubmitScreenState extends State<BidSubmitScreen> {
     });
 
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('submitBid');
-      await callable.call({
+      await callFunction('submitBid', {
         'requestId': widget.request.id,
         'price': price,
       });

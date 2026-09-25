@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/callable_function.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_typography.dart';
@@ -49,8 +50,7 @@ class _RateCustomerScreenState extends State<RateCustomerScreen> {
     });
 
     try {
-      final callable = FirebaseFunctions.instance.httpsCallable('submitCustomerRating');
-      await callable.call({
+      await callFunction('submitCustomerRating', {
         'requestId': widget.requestId,
         'stars': _selectedStars,
         'comment': _commentController.text.trim().isEmpty ? null : _commentController.text.trim(),
@@ -74,7 +74,7 @@ class _RateCustomerScreenState extends State<RateCustomerScreen> {
     if (!mounted) return;
     Navigator.pop(context);
     try {
-      await FirebaseFunctions.instance.httpsCallable('skipCustomerRating').call({'requestId': widget.requestId});
+      await callFunction('skipCustomerRating', {'requestId': widget.requestId});
     } catch (_) {
       // Already popped — a failure here just means the next login prompts
       // again, which is the pre-existing (if annoying) behavior, not a new
