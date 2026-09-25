@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import '../services/storage_upload.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../utils/localized_zone_name.dart';
 import '../theme/app_colors.dart';
@@ -90,28 +90,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
     try {
       String? photoUrl;
       if (_photo != null) {
-        // TEMPORARY diagnostic: prove exactly what auth state exists at the
-        // moment of upload, since the previous fix (forcing a token
-        // refresh) didn't change anything.
-        final debugUser = FirebaseAuth.instance.currentUser;
-        String tokenDebug;
-        try {
-          final token = await debugUser?.getIdToken(true);
-          tokenDebug = token == null ? 'NULL' : 'len=${token.length}';
-        } catch (e) {
-          tokenDebug = 'getIdToken THREW: $e';
-        }
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('DEBUG uid=${debugUser?.uid} _uid=$_uid token=$tokenDebug bucket=${FirebaseStorage.instance.bucket}'),
-              duration: const Duration(seconds: 15),
-            ),
-          );
-        }
-        final ref = FirebaseStorage.instance.ref('profile_pictures/$_uid/photo.jpg');
-        await ref.putFile(_photo!);
-        photoUrl = await ref.getDownloadURL();
+        photoUrl = await uploadToStorage(file: _photo!, storagePath: 'profile_pictures/$_uid/photo.jpg');
       }
 
       final userUpdates = <String, dynamic>{'gender': _gender};

@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
+import '../services/storage_upload.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../utils/localized_vehicle_type.dart';
 import '../theme/app_colors.dart';
@@ -108,20 +108,11 @@ class _KycUploadScreenState extends State<KycUploadScreen> {
 
     try {
       final uid = FirebaseAuth.instance.currentUser!.uid;
-      final storage = FirebaseStorage.instance;
-
-      // Force a fresh ID token before uploading — the Storage SDK doesn't
-      // refresh/attach tokens as eagerly as Auth/Firestore do, which caused
-      // uploads to fail with storage/unauthorized on iOS despite a
-      // perfectly valid session and correct rules (confirmed via a direct
-      // authenticated REST call against the emulator).
-      await FirebaseAuth.instance.currentUser?.getIdToken(true);
 
       final kycDocs = <String, String>{};
       for (final doc in _activeDocs.values) {
-        final ref = storage.ref('kyc_documents/$uid/${doc.fileName}');
-        await ref.putFile(doc.photo!);
-        kycDocs[doc.key] = await ref.getDownloadURL();
+        kycDocs[doc.key] =
+            await uploadToStorage(file: doc.photo!, storagePath: 'kyc_documents/$uid/${doc.fileName}');
       }
 
       await FirebaseFirestore.instance.collection('riders').doc(uid).update({
