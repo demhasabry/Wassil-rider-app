@@ -110,6 +110,13 @@ class _KycUploadScreenState extends State<KycUploadScreen> {
       final uid = FirebaseAuth.instance.currentUser!.uid;
       final storage = FirebaseStorage.instance;
 
+      // Force a fresh ID token before uploading — the Storage SDK doesn't
+      // refresh/attach tokens as eagerly as Auth/Firestore do, which caused
+      // uploads to fail with storage/unauthorized on iOS despite a
+      // perfectly valid session and correct rules (confirmed via a direct
+      // authenticated REST call against the emulator).
+      await FirebaseAuth.instance.currentUser?.getIdToken(true);
+
       final kycDocs = <String, String>{};
       for (final doc in _activeDocs.values) {
         final ref = storage.ref('kyc_documents/$uid/${doc.fileName}');
