@@ -59,10 +59,14 @@
   "startWaitingFeeButton": "Charge Waiting Fee",
   "waitingFeeActiveLabel": "Waiting fee active",
   "customerIsComingLabel": "Customer is on the way to you",
-  "waitingGracePeriodLabel": "Free wait time left: {remaining}",
-  "@waitingGracePeriodLabel": {
-    "placeholders": { "remaining": { "type": "String" } }
+  "waitingForCustomerLabel": "Waiting for customer",
+  "freeWaitTimeLeftLabel": "Free wait time left",
+  "waitingFeeAmountLabel": "{amount} SDG",
+  "@waitingFeeAmountLabel": {
+    "placeholders": { "amount": { "type": "int" } }
   },
+  "waitingFeeSoFarLabel": "so far",
+  "waitingFeeCappedLabel": "maximum reached",
   "enterDeliveryCodeTitle": "Enter delivery code",
   "deliveryCodeInstruction": "Ask the customer for the 4-digit code shown on their tracking screen.",
   "deliveryCodeHint": "1234",

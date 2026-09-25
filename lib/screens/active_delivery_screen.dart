@@ -93,13 +93,6 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
     }
   }
 
-  String _formatMinSec(Duration d) {
-    final clamped = d.isNegative ? Duration.zero : d;
-    final minutes = clamped.inMinutes;
-    final seconds = clamped.inSeconds % 60;
-    return '$minutes:${seconds.toString().padLeft(2, '0')}';
-  }
-
   Future<void> _startWaitingFee() async {
     setState(() => _isUpdating = true);
     try {
@@ -514,61 +507,141 @@ class _ActiveDeliveryScreenState extends State<ActiveDeliveryScreen> {
                   // Before that, show the same countdown the customer sees,
                   // so the rider knows how much longer they're waiting for.
                   if (!isPickedUp && widget.request.hasArrived) ...[
-                    const SizedBox(height: 10),
-                    if (widget.request.arrivalAcknowledgedAt != null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                          decoration: BoxDecoration(color: AppColors.successTintAlt, borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.directions_walk, size: 16, color: AppColors.successText),
-                              const SizedBox(width: 6),
-                              Text(l10n.customerIsComingLabel, style: AppTypography.caption(color: AppColors.successText)),
-                            ],
-                          ),
-                        ),
-                      ),
-                    if (widget.request.waitingFeeStartedAt != null)
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                        decoration: BoxDecoration(color: AppColors.accentTint, borderRadius: BorderRadius.circular(12)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.timer_outlined, size: 16, color: AppColors.accentInk),
-                            const SizedBox(width: 6),
-                            Text(l10n.waitingFeeActiveLabel, style: AppTypography.caption(color: AppColors.accentInk)),
-                          ],
-                        ),
-                      )
-                    else if (waitingRemaining > Duration.zero)
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                        decoration: BoxDecoration(color: AppColors.surfaceAlt, borderRadius: BorderRadius.circular(12)),
-                        child: Text(
-                          l10n.waitingGracePeriodLabel(_formatMinSec(waitingRemaining)),
-                          textAlign: TextAlign.center,
-                          style: AppTypography.caption(color: AppColors.muted),
-                        ),
-                      )
-                    else
-                      OutlinedButton.icon(
-                        onPressed: _isUpdating ? null : _startWaitingFee,
-                        icon: const Icon(Icons.timer_outlined, size: 18),
-                        label: Text(l10n.startWaitingFeeButton),
-                      ),
+                    const SizedBox(height: 12),
+                    _WaitingStatusCard(
+                      acknowledged: widget.request.arrivalAcknowledgedAt != null,
+                      feeStartedAt: widget.request.waitingFeeStartedAt,
+                      waitingRemaining: waitingRemaining,
+                      isUpdating: _isUpdating,
+                      onStartWaitingFee: _startWaitingFee,
+                    ),
                   ],
                 ],
                 ),
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One cohesive card for the whole "waiting on the customer" state, replacing
+/// what used to be up to three separately-colored stacked pills (customer
+/// acknowledgment, waiting-fee-active, and the plain countdown text) with a
+/// single glanceable number — big and legible from an arm's length while
+/// waiting in a vehicle — that switches meaning (grace-period countdown vs.
+/// accruing fee) rather than piling states on top of each other.
+class _WaitingStatusCard extends StatelessWidget {
+  final bool acknowledged;
+  final DateTime? feeStartedAt;
+  final Duration waitingRemaining;
+  final bool isUpdating;
+  final VoidCallback onStartWaitingFee;
+
+  const _WaitingStatusCard({
+    required this.acknowledged,
+    required this.feeStartedAt,
+    required this.waitingRemaining,
+    required this.isUpdating,
+    required this.onStartWaitingFee,
+  });
+
+  // Mirrors functions/src/completeDelivery.js's WAITING_FEE_PER_MINUTE /
+  // WAITING_FEE_MAX_MINUTES — display-only estimate so the rider sees the
+  // fee actually climbing in real time; the server is always the source of
+  // truth for the real charge at completion, this never bills anything.
+  static const _perMinute = 50;
+  static const _maxMinutes = 10;
+
+  String _formatMinSec(Duration d) {
+    final clamped = d.isNegative ? Duration.zero : d;
+    final minutes = clamped.inMinutes;
+    final seconds = clamped.inSeconds % 60;
+    return '$minutes:${seconds.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    if (feeStartedAt != null) {
+      final rawMinutes = (DateTime.now().difference(feeStartedAt!).inSeconds / 60).ceil();
+      final elapsedMinutes = rawMinutes > _maxMinutes ? _maxMinutes : (rawMinutes < 0 ? 0 : rawMinutes);
+      final capped = elapsedMinutes >= _maxMinutes;
+      final amount = elapsedMinutes * _perMinute;
+      return _card(
+        color: AppColors.accentTint,
+        border: AppColors.accentBorder,
+        icon: Icons.timer,
+        iconColor: AppColors.accentInk,
+        label: l10n.waitingFeeActiveLabel,
+        labelColor: AppColors.accentInk,
+        value: l10n.waitingFeeAmountLabel(amount),
+        valueColor: AppColors.accentInk,
+        caption: capped ? l10n.waitingFeeCappedLabel : l10n.waitingFeeSoFarLabel,
+      );
+    }
+
+    if (waitingRemaining > Duration.zero) {
+      final statusColor = acknowledged ? AppColors.successText : AppColors.muted;
+      return _card(
+        color: acknowledged ? AppColors.successTintAlt : AppColors.surfaceAlt,
+        border: acknowledged ? AppColors.successBorder : AppColors.border,
+        icon: acknowledged ? Icons.directions_walk : Icons.hourglass_top,
+        iconColor: statusColor,
+        label: acknowledged ? l10n.customerIsComingLabel : l10n.waitingForCustomerLabel,
+        labelColor: statusColor,
+        value: _formatMinSec(waitingRemaining),
+        valueColor: acknowledged ? AppColors.successText : AppColors.ink,
+        caption: l10n.freeWaitTimeLeftLabel,
+      );
+    }
+
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: isUpdating ? null : onStartWaitingFee,
+        icon: const Icon(Icons.timer_outlined, size: 18),
+        label: Text(l10n.startWaitingFeeButton),
+      ),
+    );
+  }
+
+  Widget _card({
+    required Color color,
+    required Color border,
+    required IconData icon,
+    required Color iconColor,
+    required String label,
+    required Color labelColor,
+    required String value,
+    required Color valueColor,
+    required String caption,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: border),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 15, color: iconColor),
+              const SizedBox(width: 6),
+              Text(label, style: AppTypography.label(size: 12.5, color: labelColor)),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(value, style: AppTypography.amount(size: 28, color: valueColor)),
+          const SizedBox(height: 2),
+          Text(caption, style: AppTypography.caption(color: AppColors.mutedLight)),
         ],
       ),
     );

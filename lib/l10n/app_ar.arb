@@ -56,10 +56,11 @@
   "startWaitingFeeButton": "فرض رسوم انتظار",
   "waitingFeeActiveLabel": "رسوم الانتظار مفعّلة",
   "customerIsComingLabel": "العميل في طريقه إليك",
-  "waitingGracePeriodLabel": "الوقت المجاني المتبقي: {remaining}",
-  "@waitingGracePeriodLabel": {
-    "placeholders": { "remaining": { "type": "String" } }
-  },
+  "waitingForCustomerLabel": "بانتظار العميل",
+  "freeWaitTimeLeftLabel": "الوقت المجاني المتبقي",
+  "waitingFeeAmountLabel": "{amount} جنيه سوداني",
+  "waitingFeeSoFarLabel": "حتى الآن",
+  "waitingFeeCappedLabel": "تم الوصول للحد الأقصى",
   "enterDeliveryCodeTitle": "أدخل رمز التوصيل",
   "deliveryCodeInstruction": "اطلب من العميل الرمز المكون من 4 أرقام الظاهر في شاشة التتبع الخاصة به.",
   "deliveryCodeHint": "1234",

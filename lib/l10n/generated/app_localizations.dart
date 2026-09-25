@@ -392,11 +392,35 @@ abstract class AppLocalizations {
   /// **'Customer is on the way to you'**
   String get customerIsComingLabel;
 
-  /// No description provided for @waitingGracePeriodLabel.
+  /// No description provided for @waitingForCustomerLabel.
   ///
   /// In en, this message translates to:
-  /// **'Free wait time left: {remaining}'**
-  String waitingGracePeriodLabel(String remaining);
+  /// **'Waiting for customer'**
+  String get waitingForCustomerLabel;
+
+  /// No description provided for @freeWaitTimeLeftLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Free wait time left'**
+  String get freeWaitTimeLeftLabel;
+
+  /// No description provided for @waitingFeeAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} SDG'**
+  String waitingFeeAmountLabel(int amount);
+
+  /// No description provided for @waitingFeeSoFarLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'so far'**
+  String get waitingFeeSoFarLabel;
+
+  /// No description provided for @waitingFeeCappedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'maximum reached'**
+  String get waitingFeeCappedLabel;
 
   /// No description provided for @enterDeliveryCodeTitle.
   ///

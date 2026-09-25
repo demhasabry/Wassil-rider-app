@@ -159,9 +159,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customerIsComingLabel => 'Customer is on the way to you';
 
   @override
-  String waitingGracePeriodLabel(String remaining) {
-    return 'Free wait time left: $remaining';
+  String get waitingForCustomerLabel => 'Waiting for customer';
+
+  @override
+  String get freeWaitTimeLeftLabel => 'Free wait time left';
+
+  @override
+  String waitingFeeAmountLabel(int amount) {
+    return '$amount SDG';
   }
+
+  @override
+  String get waitingFeeSoFarLabel => 'so far';
+
+  @override
+  String get waitingFeeCappedLabel => 'maximum reached';
 
   @override
   String get enterDeliveryCodeTitle => 'Enter delivery code';

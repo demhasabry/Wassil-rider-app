@@ -158,9 +158,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customerIsComingLabel => 'العميل في طريقه إليك';
 
   @override
-  String waitingGracePeriodLabel(String remaining) {
-    return 'الوقت المجاني المتبقي: $remaining';
+  String get waitingForCustomerLabel => 'بانتظار العميل';
+
+  @override
+  String get freeWaitTimeLeftLabel => 'الوقت المجاني المتبقي';
+
+  @override
+  String waitingFeeAmountLabel(int amount) {
+    return '$amount جنيه سوداني';
   }
+
+  @override
+  String get waitingFeeSoFarLabel => 'حتى الآن';
+
+  @override
+  String get waitingFeeCappedLabel => 'تم الوصول للحد الأقصى';
 
   @override
   String get enterDeliveryCodeTitle => 'أدخل رمز التوصيل';
